@@ -6,6 +6,8 @@ let fr; // frame rate for display
 let zoff = 0;
 let particles = [];
 let flowfield;
+let modeSelectMenu;
+let drawMode = "White Flies";
 
 function setup() {
   // createCanvas(600, 400);
@@ -13,14 +15,39 @@ function setup() {
   cols = floor(width / scl);
   rows = floor(height / scl);
   fr = createP('');
-  for (let i = 0; i < 5000; i++) {
+  for (let i = 0; i < 3000; i++) {
     particles[i] = new Particle();
   }
   flowfield = new Array(cols * rows);
   background(0);
+  // button = createButton('Save Image');
+  // button.mousePressed(saveImg);
+  modeSelectMenu = createSelect();
+  modeSelectMenu.position(10, windowHeight - 40);
+  modeSelectMenu.option('White Flies');
+  modeSelectMenu.option('Ghost Web');
+  modeSelectMenu.option('Coloured Comets');
+  modeSelectMenu.option('Coloured Web');
+  modeSelectMenu.changed(modeSelectEvent);
+}
+
+function modeSelectEvent() {
+  background(0);
+  drawMode = modeSelectMenu.value();
+}
+
+function saveImg() {
+  save('perlin.png');
 }
 
 function draw() {
+  if (drawMode == "White Flies") {
+    background(0); // draw solid background
+  } else if (drawMode == "Coloured Comets") {
+    background(0, 0, 0, 7); // draw slightly translucent background
+  } else if (drawMode == "Ghost Web" || drawMode == "Coloured Web") {
+    // no need to re-draw background
+  }
   let yoff = 0;
   for (let y = 0; y < rows; y++) {
     let xoff = 0;
@@ -50,8 +77,8 @@ function draw() {
     particles[i].show();
   }
 
-  if (frameCount % 60 == 0) {
-    fr.html("FPS: " + floor(frameRate()));
-  }
+  // if (frameCount % 60 == 0) {
+  //   fr.html("FPS: " + floor(frameRate()));
+  // }
 
 }
