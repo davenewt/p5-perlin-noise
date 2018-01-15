@@ -26,15 +26,113 @@
 		canvas {
 			margin:auto;
 		}
-		p {
+		body,h1,h2,h3,h4,h5,h6,p,label {
 			font-family: 'Helvetica', sans-serif;
-			font-weight: 100;
 			letter-spacing: 1px;
-			color: #222;
-			padding-left:1em;
+		}
+		p, label {
+			font-weight: 100;
+			color: #888;
+			padding-left:0;
+		}
+		label {
+			font-size: 0.8em;
+			padding-left: 0.5em;
+		}
+
+		/* MODAL */
+		/* The Modal (background) */
+		.controlPanel {
+		  display: none; /* Hidden by default */
+		  position: fixed; /* Stay in place */
+		  z-index: 1; /* Sit on top */
+		  left: 0;
+		  top: 0;
+		  width: 100%; /* Full width */
+		  height: 100%; /* Full height */
+		  overflow: auto; /* Enable scroll if needed */
+		  background-color: rgb(0,0,0); /* Fallback color */
+		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		  -webkit-animation-name: fadeIn; /* Fade in the background */
+		  -webkit-animation-duration: 0.4s;
+		  animation-name: fadeIn;
+		  animation-duration: 0.4s
+		}
+		/* Modal Content */
+		.cp-content {
+		  position: fixed;
+		  bottom: 0;
+		  background-color: RGB(230,230,230);
+		  width: 100%;
+		  -webkit-animation-name: slideIn;
+		  -webkit-animation-duration: 0.4s;
+		  animation-name: slideIn;
+		  animation-duration: 0.4s
+		}
+		/* Close Button */
+		.close {
+		  color: white;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+		.close:hover, .close:focus {
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		/* Header, Footer */
+		.cp-header, .cp-footer {
+		  padding: 0.5em 1em;
+		  background-color: RGB(30,30,30);
+		  color: white;
+		}
+		/* Body */
+		#cp-body {
+			padding: 0.5em 1em;
+			background-color: RGB(30,30,30);
+			color: white;
+			border-top:1px solid #333;
+			border-bottom: 1px solid #333;
+		}
+
+		/* Add Animation */
+		@-webkit-keyframes slideIn {
+		    from {bottom: -300px; opacity: 0}
+		    to {bottom: 0; opacity: 1}
+		}
+		@keyframes slideIn {
+		    from {bottom: -300px; opacity: 0}
+		    to {bottom: 0; opacity: 1}
+		}
+		@-webkit-keyframes fadeIn {
+		    from {opacity: 0}
+		    to {opacity: 1}
+		}
+		@keyframes fadeIn {
+		    from {opacity: 0}
+		    to {opacity: 1}
 		}
 	</style>
 </head>
 <body>
+
+<!-- The Modal -->
+<div id="controlPanel" class="modal">
+
+  <!-- Modal content -->
+  <div class="cp-content">
+    <div class="cp-header">
+      <span class="close">&times;</span>
+      <h2>Perlin Noise Flow Field</h2>
+    </div>
+    <div id="cp-body">
+    </div>
+    <div class="cp-footer">
+    </div>
+  </div>
+
+</div>
+
 </body>
 </html>

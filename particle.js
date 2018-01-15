@@ -34,7 +34,7 @@ function Particle() {
         break;
       case 'Ghost Web':
         colorMode(RGB, 255, 255, 255, 100);
-        stroke(255, 255, 255, 2);
+        stroke(255, 255, 255, 1);
         strokeWeight(1);
         line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         break;
@@ -42,8 +42,7 @@ function Particle() {
         colorMode(RGB, 255, 255, 255, 100);
         let blueV2 = map(this.vel.x + this.vel.y, 0, this.maxspeed * 2, 255, 0);
         let redV2 = map(this.vel.x + this.vel.y, 0, this.maxspeed * 2, 0, 255);
-        stroke(redV2, 0, blueV2, 2);
-        // stroke(255, 255, 255, 5);
+        stroke(redV2, 0, blueV2, 1);
         strokeWeight(1);
         line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         break;
